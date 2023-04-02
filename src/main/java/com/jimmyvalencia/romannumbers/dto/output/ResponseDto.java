@@ -1,7 +1,10 @@
 package com.jimmyvalencia.romannumbers.dto.output;
 
+import lombok.Builder;
 import lombok.Data;
 
 @Data
-public class Response {
+@Builder
+public class ResponseDto {
+    String response;
 }
