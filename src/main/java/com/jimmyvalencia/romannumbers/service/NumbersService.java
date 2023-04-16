@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class RomanService implements RomanServiceInterface{
+public class NumbersService implements NumbersServiceInterface {
 
     @Override
     public ResponseDto integerToRoman(InputDto integer) {
@@ -19,13 +19,13 @@ public class RomanService implements RomanServiceInterface{
 
         for (int i = 0; i < values.length; i++) {
             while (num >= values[i]) {
-                num = num - values[i];
+                num -= values[i];
                 roman.append(romanLetters[i]);
             }
         }
 
         return ResponseDto.builder()
-                .response(roman.toString())
+                .response("The roman number is: "+ roman)
                 .build();
 
     }
@@ -51,11 +51,11 @@ public class RomanService implements RomanServiceInterface{
         int number = 0;
 
         for (int i = 0; i < s.length(); i++) {
-            number = number + (map.get(s.charAt(i)));
+            number += map.get(s.charAt(i));
         }
 
         return ResponseDto.builder()
-                .response(String.valueOf(number))
+                .response("The integer number is: " + number)
                 .build();
     }
 }
