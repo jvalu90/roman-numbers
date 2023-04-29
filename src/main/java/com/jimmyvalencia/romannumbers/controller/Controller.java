@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/v1/roman-numbers")
 public class Controller {
@@ -18,14 +20,14 @@ public class Controller {
     }
 
     @PostMapping("/roman-to-integer")
-    public ResponseEntity<ResponseDto> romanToIntegerConversion(@RequestBody InputDto roman) {
+    public ResponseEntity<ResponseDto> romanToIntegerConversion(@RequestBody @Valid InputDto roman) {
         return ResponseEntity
                 .status(200)
                 .body(romanService.romanToInteger(roman));
     }
 
     @PostMapping("/integer-to-roman")
-    public ResponseEntity<ResponseDto> integerToRomanConversion(@RequestBody InputDto integer) {
+    public ResponseEntity<ResponseDto> integerToRomanConversion(@RequestBody @Valid InputDto integer) {
         return ResponseEntity
                 .status(200)
                 .body(romanService.integerToRoman(integer));
